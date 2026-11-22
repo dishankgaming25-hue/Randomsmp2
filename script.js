@@ -5,7 +5,7 @@
  */
 const SITE_CONFIG = {
   serverHost: "Randomsmp.softhost.pro",
-  bedrockPort: "19132",
+  bedrockPort: "19186",
   discordUrl: "https://discord.gg/YvMmBxmG5"
 };
 
