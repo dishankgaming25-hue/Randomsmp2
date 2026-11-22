@@ -1,18 +1,12 @@
 "use strict";
 
 /*
- * EDIT YOUR SERVER DETAILS AND SAMPLE RANK PRICES HERE.
- * Rank prices below are examples; change them to match your actual store.
+ * Edit your server details here.
  */
 const SITE_CONFIG = {
   serverHost: "Randomsmp.softhost.pro",
   bedrockPort: "19132",
-  discordUrl: "https://discord.gg/YVMmBxmG5",
-  rankPrices: {
-    vip: "$4.99",
-    elite: "$9.99",
-    legend: "$19.99"
-  }
+  discordUrl: "https://discord.gg/YvMmBxmG5"
 };
 
 const toast = document.querySelector("#toast");
@@ -53,6 +47,7 @@ async function copyText(text) {
     temporaryInput.style.opacity = "0";
     document.body.appendChild(temporaryInput);
     temporaryInput.select();
+
     const copied = document.execCommand("copy");
     temporaryInput.remove();
     return copied;
@@ -74,15 +69,10 @@ function setSiteDetails() {
     element.href = SITE_CONFIG.discordUrl;
   });
 
-  document.querySelectorAll("[data-rank-price]").forEach((element) => {
-    const rank = element.dataset.rankPrice;
-    if (SITE_CONFIG.rankPrices[rank]) {
-      element.textContent = SITE_CONFIG.rankPrices[rank];
-    }
-  });
-
   const year = document.querySelector("#current-year");
-  if (year) year.textContent = new Date().getFullYear();
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
 }
 
 function setupCopyButtons() {
@@ -114,8 +104,12 @@ function setupMobileNavigation() {
 
   menuButton.addEventListener("click", () => {
     const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+
     menuButton.setAttribute("aria-expanded", String(!isOpen));
-    menuButton.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Open navigation menu" : "Close navigation menu"
+    );
     navigation.classList.toggle("open", !isOpen);
   });
 
